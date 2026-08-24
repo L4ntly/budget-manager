@@ -1,0 +1,14 @@
+# Python Önbellek Dosyaları
+__pycache__/
+*.pyc
+*.pyo
+
+
+# Sanal Ortam
+.venv/
+
+
+# Veri Dosyaları (Kişisel Harcama Kayıtları)
+data/budget.json
+
+

@@ -26,10 +26,12 @@ class HarcamaYönetici:
         return self.harcamalar
 
 
-    def urun_sil(self):
-        
+    def urun_sil(self, id_al=None):
         try:
-            id_al = int(input("ID: "))
+            if id_al is None:
+                id_al = int(input("ID: "))
+            else:
+                id_al = int(id_al)
             bulundu = False
 
             for i in self.harcamalar:                
@@ -41,11 +43,14 @@ class HarcamaYönetici:
 
             if bulundu == False:
                 print("ID bulunamadı.")
+                return False
             else:
                 print("İşlem tamamlandı.")
+                return True
 
         except ValueError:
             print(f"Hatalı Giriş: ID sayı olmalıdır.")
+            return False
         
     
         
@@ -57,11 +62,12 @@ class HarcamaYönetici:
 
         return toplam
 
-    def urun_ara(self):
-        urun_ara = input("Ürün: ")
+    def urun_ara(self, urun_ara_kelime=None):
+        if urun_ara_kelime is None:
+            urun_ara_kelime = input("Ürün: ")
         sonuclar = [
             u for u in self.harcamalar 
-            if urun_ara == u.urun
+            if urun_ara_kelime.lower() in u.urun.lower() or urun_ara_kelime == u.urun
         ]
         return sonuclar
 
@@ -176,9 +182,10 @@ class HarcamaYönetici:
             with open("data/budget.json", "r", encoding="utf-8") as f:
                 veri = json.load(f)
 
-                self.bakiye = veri["bakiye"]
+                self.bakiye = veri.get("bakiye", 10000)
+                self.harcamalar = []
 
-                for i in veri["harcamalar"]:
+                for i in veri.get("harcamalar", []):
                     harcama = Harcama(
                         i["id"],
                         i["urun"],

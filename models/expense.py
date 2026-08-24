@@ -14,12 +14,7 @@ class Harcama:
         print("Kategori:", self.kategori)
        
 
-harcama = Harcama(1,"Food",750,"Market")
-harcama.bilgileri_goster()
-
-# i.id -> 1 
-# i.urun -> "Food"
-# i.miktar -> 750
-# i.kategori -> "Market"
-# i.tarih -> "16-08-2026"
+if __name__ == "__main__":
+    harcama = Harcama(1, "Food", 750, "Market")
+    harcama.bilgileri_goster()
 
