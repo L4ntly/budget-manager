@@ -4,7 +4,7 @@ import time
 
 harcama1 = HarcamaYönetici()
 harcama1.verileri_yukle()
-print("MAIN ÇALIŞIYOR.")
+print("UYGULAMA ÇALIŞIYOR.")
 
 while True:
     print("="*40)
